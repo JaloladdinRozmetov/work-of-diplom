@@ -22,4 +22,11 @@ class Topic extends Model
             ->withPivot('score')
             ->withTimestamps();
     }
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'topic_group','topic_id','group_id')
+            ->withPivot('score')
+            ->withTimestamps();
+    }
 }

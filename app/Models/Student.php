@@ -11,7 +11,7 @@ class Student extends Model
 
     protected $table ='students';
 
-    protected $fillable = ['first_name','last_name','age','phone_number'];
+    protected $fillable = ['first_name','last_name','age','phone_number','group_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -21,5 +21,13 @@ class Student extends Model
         return $this->belongsToMany(Topic::class, 'topics_students','student_id','topic_id')
             ->withPivot('score')
             ->withTimestamps();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTopicStudentTable extends Migration
+class CreateTopicGroupTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateTopicStudentTable extends Migration
      */
     public function up()
     {
-        Schema::create('topics_students', function (Blueprint $table) {
-            $table->unsignedBiginteger('student_id')->unsigned();
+        Schema::create('topic_group', function (Blueprint $table) {
+            $table->unsignedBiginteger('group_id')->unsigned();
             $table->unsignedBiginteger('topic_id')->unsigned();
-            $table->float('score')->nullable();
+            $table->float('count');
 
             $table->foreign('topic_id')->references('id')
                 ->on('topics')->onDelete('cascade');
-            $table->foreign('student_id')->references('id')
-                ->on('students')->onDelete('cascade');
+            $table->foreign('group_id')->references('id')
+                ->on('groups')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateTopicStudentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('topic_student');
+        Schema::dropIfExists('topic_group');
     }
 }
