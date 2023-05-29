@@ -27,7 +27,6 @@ class Group extends Model
     public function topics()
     {
         return $this->belongsToMany(Topic::class, 'topic_group','group_id','topic_id')
-            ->withPivot('count')
             ->withTimestamps();
     }
 }

@@ -56,28 +56,27 @@ class GroupController extends Controller
         $group = Group::create([
             'name' => $request->name,
         ]);
-        Group::query()->find($group->id)->topics()->attach($request->topics,['count'=>count($request->topics)]);
+        Group::query()->find($group->id)->topics()->attach($request->topics);
         return redirect()
             ->route('group.show', ['id' => $group->id])
             ->with('success', 'Success created new group!');
     }
 
-    public function update(Request $request,$id)
-    {
-        $this->validate($request,[
-            'name' => 'required',
-        ]);
-
-        Group::query()->find($id)->update([
-            'name' => $request->name,
-        ]);
-        Group::query()->find($id)->topics()->detach($request->topics,['count'=>count($request->topics)]);
-
-
-        return redirect()
-            ->route('group.show', ['id' => $id])
-            ->with('success', 'Successful updated');
-    }
+//    public function update(Request $request,$id)
+//    {
+//        $this->validate($request,[
+//            'name' => 'required',
+//        ]);
+//
+//        Group::query()->find($id)->update([
+//            'name' => $request->name,
+//        ]);
+//        Group::query()->find($id)->topics()->sync($request->topics);
+//
+//        return redirect()
+//            ->route('group.show', ['id' => $id])
+//            ->with('success', 'Successful updated');
+//    }
 
     /**
      * @param $id
@@ -94,6 +93,6 @@ class GroupController extends Controller
     {
             Group::query()->find($id)->delete();
 
-            return redirect()->back()->with('success','Success deleted!');
+            return redirect()->route('group.index')->with('success','Success deleted!');
     }
 }

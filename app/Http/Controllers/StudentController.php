@@ -81,13 +81,26 @@ class StudentController extends Controller
             'group_id' => 'required',
             'phone_number' => 'required',
         ]);
-        $student = Student::find($id)->update([
+         Student::query()->with('topics')->find($id)->update([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'age' => $request->age,
             'phone_number' => $request->phone_number,
             'group_id' => $request->group_id,
         ]);
+
+        $group = Group::query()->with('topics')->findOrFail($request->group_id);
+
+        $student = Student::query()->with('topics')->findOrFail($id);
+        $topicSync = [];
+        foreach ($group->topics as $topic)
+        {
+            $topicSync[$topic->id] = ['score'=>0];
+        }
+        $student->topics()->sync($topicSync);
+
+
+
         return redirect()
             ->route('students.show', ['id' => $id])
             ->with('success', 'Successful updated');
@@ -108,6 +121,6 @@ class StudentController extends Controller
     {
         Student::query()->findOrFail($id)->delete();
 
-        return redirect()->back()->with('success','Student has deleted!');
+        return redirect()->route('students.index')->with('success','Student has deleted!');
     }
 }

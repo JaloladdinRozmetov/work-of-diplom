@@ -78,6 +78,11 @@
                                     Groups
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('evaluation.index')}}">
+                                    Evaluation
+                                </a>
+                            </li>
                             <li class="nav-item right">
                                 <a class="nav-link" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

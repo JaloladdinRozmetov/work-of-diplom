@@ -30,7 +30,7 @@
                        name="phone_number" required value="{{ old('phone_number') ?? $student->phone_number ?? '' }}">
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary">Сохранить</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </form>
     </div>

@@ -11,7 +11,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Group name</th>
-                <th><i class="fas fa-edit"></i></th>
+{{--                <th><i class="fas fa-edit"></i></th>--}}
                 <th><i class="fas fa-trash-alt"></i></th>
             </tr>
             </thead>
@@ -21,11 +21,11 @@
                 <tr>
                     <th scope="row">{{$group->id}}</th>
                     <td><a href="{{route('group.show',['id'=>$group->id])}}">{{$group->name}}</a></td>
-                    <td>
-                        <a href="{{ route('group.edit', ['id' => $group->id]) }}">
-                            <i class="far fa-edit"></i>
-                        </a>
-                    </td>
+{{--                    <td>--}}
+{{--                        <a href="{{ route('group.edit', ['id' => $group->id]) }}">--}}
+{{--                            <i class="far fa-edit"></i>--}}
+{{--                        </a>--}}
+{{--                    </td>--}}
                     <td>
                         <form action="{{ route('group.destroy', ['group' => $group->id]) }}"
                               method="post" onsubmit="return confirm('Are you sure delete this group?')">

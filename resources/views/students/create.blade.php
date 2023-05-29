@@ -14,7 +14,7 @@
                    value="{{ old('last_name') ?? $student->last_name ?? '' }}">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control w-25 d-inline mr-4" placeholder="Age"
+            <input type="number" class="form-control w-25 d-inline mr-4" placeholder="Age"
                    name="age" required value="{{ old('age') ?? $student->age ?? '' }}">
         </div>
         <div class="form-group">

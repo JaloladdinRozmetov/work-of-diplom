@@ -58,11 +58,11 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <a href="{{ route('group.edit', ['id' => $group->id]) }}"
-                   class="btn btn-success">
-                    Update group
-                </a>
-                <form method="post" class="d-inline" onsubmit="return confirm('Delete this student?')"
+{{--                <a href="{{ route('group.edit', ['id' => $group->id]) }}"--}}
+{{--                   class="btn btn-success">--}}
+{{--                    Update group--}}
+{{--                </a>--}}
+                <form method="post" class="d-inline" onsubmit="return confirm('Delete this group?')"
                       action="{{ route('group.destroy', ['group' => $group->id]) }}">
                     @csrf
                     @method('DELETE')
