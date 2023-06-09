@@ -83,6 +83,15 @@
                                     Evaluation
                                 </a>
                             </li>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Correlation
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{route('evaluation.correlation.group')}}">By groups</a>
+{{--                                    <a class="dropdown-item" href="{{route('evaluation.correlation.topic')}}">By topics</a>--}}
+                                </div>
+                            </div>
                             <li class="nav-item right">
                                 <a class="nav-link" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();

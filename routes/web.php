@@ -49,5 +49,7 @@ Route::group(['middleware'=>['auth','is_admin']],function (){
     Route::get('/evaluation/score/{student_id}',[App\Http\Controllers\EvaluationController::class,'scoreStudent'])->name('evaluation.score');
     Route::post('evaluation/score/{student_id}',[App\Http\Controllers\EvaluationController::class,'store'])->name('evaluation.store');
     Route::get('/evaluation/{first_score}/{second_score}/{group_id}',[App\Http\Controllers\EvaluationController::class,'findScores'])->name('evaluation.find.score');
+    Route::get('/evaluation/correlation/group',[App\Http\Controllers\EvaluationController::class,'correlationGroup'])->name('evaluation.correlation.group');
+    Route::get('/evaluation/correlation/topic',[App\Http\Controllers\EvaluationController::class,'correlationTopic'])->name('evaluation.correlation.topic');
 
 });
